@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ecommerceweb-6d37b": {
+      "hosting": {
+        "EcommerceWeb": [
+          "ecommerceweb-6d37b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ecommerceweb-6d37b"
+  }
+}
