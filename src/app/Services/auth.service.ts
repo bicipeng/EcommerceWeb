@@ -3,6 +3,7 @@ import firebase from "firebase/compat/app";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'

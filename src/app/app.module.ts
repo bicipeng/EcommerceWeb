@@ -31,6 +31,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { AuthService } from './Services/auth.service';
 import { AuthGuardService } from './Services/auth-guard.service';
+import { UserService } from './Services/user.service';
+import { AdminAuthGuardService } from './Services/admin-auth-guard.service';
 
 
 @NgModule({
@@ -60,8 +62,8 @@ import { AuthGuardService } from './Services/auth-guard.service';
       {path:'check-out', component:CheckOutComponent, canActivate:[AuthGuardService]},
       {path:"my/orders", component:MyOrdersComponent, canActivate:[AuthGuardService]},
       {path:'order-success', component:OrderSuccessComponent,canActivate:[AuthGuardService]},
-      {path:'admin/products', component:AdminProductsComponent, canActivate:[AuthGuardService]},
-      {path:'admin/orders', component:AdminOrdersComponent,canActivate:[AuthGuardService]}
+      {path:'admin/products', component:AdminProductsComponent, canActivate:[AuthGuardService,AdminAuthGuardService]},
+      {path:'admin/orders', component:AdminOrdersComponent,canActivate:[AuthGuardService,AdminAuthGuardService]}
 
     ]),
     BrowserModule,
@@ -79,7 +81,8 @@ import { AuthGuardService } from './Services/auth-guard.service';
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
