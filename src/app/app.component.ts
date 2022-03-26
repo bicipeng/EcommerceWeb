@@ -12,7 +12,7 @@ import { UserService } from './Services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private auth:AuthService, private route:Router,private userService:UserService){
+  constructor(private auth:AuthService, private route:Router, private userService:UserService){
     this.auth.user$.subscribe(user=>{
       if(user){
         this.userService.save(user);

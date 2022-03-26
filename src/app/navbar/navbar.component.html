@@ -16,15 +16,19 @@
             <a class="nav-link" routerLink="/login">Log In </a>
           </li>
         </ng-template>
-          <li *ngIf="AuthService.user$ |async as user ; else notlogin" ngbDropdown class="nav-item dropdown">
+          <li *ngIf="appUser ; else notlogin" ngbDropdown class="nav-item dropdown">
             <a   ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             {{ user.displayName}}
+             {{ appUser.name}}
             </a>
             <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <!-- do we need to remove li here ? -->
               <li><a class="dropdown-item" routerLink="/my/orders">My Orders</a></li>
-              <li><a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a></li>
+
+              <ng-container *ngIf="appUser.isAdmin" >
+              <li><a  class="dropdown-item" routerLink="/admin/orders">Manage Orders</a></li>
               <li><a class="dropdown-item" routerLink="/admin/products">Mangae Products </a></li>
+              </ng-container> 
+
               <li><a class="dropdown-item" (click)="logout()">Log out </a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>

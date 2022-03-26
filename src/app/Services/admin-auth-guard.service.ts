@@ -14,23 +14,8 @@ export class AdminAuthGuardService implements CanActivate{
   constructor(private auth:AuthService,private userService:UserService) { }
 
   canActivate():Observable<boolean>{
-    //this user is what you log in with 
-      // const user = this.auth.user$.pipe(
-      // map(user => {
-      //   if(user)
-      //   return  this.userService.get(user.uid)
-      //   return;
-      // }
-      // ));
-      // const isAdmin = user.pipe(map(appUser =>appUser.isAdmin
-      //   ))
-      // return true;
-      return this.auth.user$
-      .pipe(switchMap(
-        (user) => 
-         this.userService.get(user!.uid).valueChanges()  
-  
-        ))
+       //admin user exits, so use the ! to by pass the Object is possibly null error 
+       return this.auth.appUser$
       .pipe(map(appUser => appUser!.isAdmin));
      }
   }
