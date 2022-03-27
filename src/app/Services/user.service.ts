@@ -20,7 +20,7 @@ export class UserService {
 
   //get user obj based on uid from firebase
   get(uid:string):AngularFireObject<User>{
-console.log("in user.service get user")
+
     return this.db.object('/users/' + uid);
   }
 }

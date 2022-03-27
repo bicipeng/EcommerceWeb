@@ -33,6 +33,8 @@ import { AuthService } from './Services/auth.service';
 import { AuthGuardService } from './Services/auth-guard.service';
 import { UserService } from './Services/user.service';
 import { AdminAuthGuardService } from './Services/admin-auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoriesService } from './Services/categories.service';
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { AdminAuthGuardService } from './Services/admin-auth-guard.service';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
+    ProductFormComponent,
   
  
     
@@ -63,6 +66,7 @@ import { AdminAuthGuardService } from './Services/admin-auth-guard.service';
       {path:"my/orders", component:MyOrdersComponent, canActivate:[AuthGuardService]},
       {path:'order-success', component:OrderSuccessComponent,canActivate:[AuthGuardService]},
       {path:'admin/products', component:AdminProductsComponent, canActivate:[AuthGuardService,AdminAuthGuardService]},
+      {path:'admin/products/new', component:ProductFormComponent, canActivate:[AuthGuardService,AdminAuthGuardService]},
       {path:'admin/orders', component:AdminOrdersComponent,canActivate:[AuthGuardService,AdminAuthGuardService]}
 
     ]),
@@ -82,7 +86,8 @@ import { AdminAuthGuardService } from './Services/admin-auth-guard.service';
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    CategoriesService
   ],
   bootstrap: [AppComponent]
 })
