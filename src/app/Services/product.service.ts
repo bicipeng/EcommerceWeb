@@ -11,4 +11,12 @@ export class ProductService {
   create(product:any){
   return  this.db.list('/products').push(product);
   }
+
+  getAll(){
+    return this.db.list('/products');
+  }
+  //get product by id from firebase
+  getOne(productId:string){
+    return this.db.object('/products/' + productId).valueChanges();
+  }
 }
