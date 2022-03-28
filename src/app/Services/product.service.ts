@@ -19,4 +19,11 @@ export class ProductService {
   getOne(productId:string){
     return this.db.object('/products/' + productId).valueChanges();
   }
+  upDate(productId:string,product:any){
+    return this.db.object("/products/"+productId).update(product);
+
+  }
+  deleteProduct(productId:string){
+    return this.db.object("/products/" + productId).remove();
+  }
 }
