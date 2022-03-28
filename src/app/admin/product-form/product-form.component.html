@@ -81,10 +81,10 @@
     </div>
     <div class="col-md-6">
         <div class="card" style="width: 20rem;">
-        <img [src]="imgUrl.value" class="card-img-top" >
+        <img *ngIf="product.imgUrl"[src]="product.imgUrl" class="card-img-top" >
             <div class="card-body">
-              <h5 class="card-title">{{title.value}}</h5>
-              <p class="card-text">{{price.value | currency:'USD'}}</p>
+              <h5 class="card-title">{{product.title}}</h5>
+              <p class="card-text">{{product.price | currency:'USD'}}</p>
             </div>
           </div>
     </div>
