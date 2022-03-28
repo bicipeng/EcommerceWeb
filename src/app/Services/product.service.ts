@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { Product } from '../Models/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ProductService {
   return  this.db.list('/products').push(product);
   }
 
-  getAll(){
+  getAll():AngularFireList<Product>{
     return this.db.list('/products');
   }
   //get product by id from firebase
