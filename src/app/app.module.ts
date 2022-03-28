@@ -37,6 +37,7 @@ import { AdminAuthGuardService } from './Services/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoriesService } from './Services/categories.service';
 import { ProductService } from './Services/product.service';
+
 //import { ProductComponent } from './Services/product/product.component';
 
 
