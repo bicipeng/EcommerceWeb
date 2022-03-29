@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable ,Subscription} from 'rxjs';
 import { Category } from 'src/app/Models/Category';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { ProductService } from 'src/app/Services/product.service';
@@ -17,6 +17,9 @@ export class ProductFormComponent implements OnInit {
   categories$: Observable<any>;
   product:any;
   id:string;
+  categories:any;
+  subscription:Subscription;
+  
 
   constructor(
     private categoryService:CategoriesService,
@@ -25,11 +28,12 @@ export class ProductFormComponent implements OnInit {
     private route:ActivatedRoute
     ) { 
 
-  this.categories$ = this.categoryService.getCategories();
+   this.categories$ =this.categoryService.getCategories().valueChanges();
   this.id = this.route.snapshot.paramMap.get('id')!;
   if(this.id){
     this.productService.getOne(this.id).pipe(take(1)).subscribe(p=>this.product=p);
   }
+  this.subscription = this.categories$.subscribe(prts=> this.categories= prts)
     
   }
    
@@ -46,7 +50,8 @@ export class ProductFormComponent implements OnInit {
     if(this.id) this.productService.upDate(this.id,product);
     else
     this.productService.create(product);
-    console.log("Form submitted!"); 
+    console.log("Form submitted!");
+
     this.router.navigate(['/admin/products']);
 
   }

@@ -13,8 +13,8 @@ export class ProductService {
   return  this.db.list('/products').push(product);
   }
 
-  getAll():AngularFireList<Product>{
-    return this.db.list('/products');
+  getAll(){
+    return this.db.list<Product>('/products');
   }
   //get product by id from firebase
   getOne(productId:string){

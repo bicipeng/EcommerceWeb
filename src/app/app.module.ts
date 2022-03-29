@@ -37,6 +37,8 @@ import { AdminAuthGuardService } from './Services/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoriesService } from './Services/categories.service';
 import { ProductService } from './Services/product.service';
+import { CardComponent } from './card/card.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 //import { ProductComponent } from './Services/product/product.component';
 
@@ -55,6 +57,8 @@ import { ProductService } from './Services/product.service';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
+    CardComponent,
+    ProductFilterComponent,
  
  
     
@@ -62,7 +66,7 @@ import { ProductService } from './Services/product.service';
   imports: [
   
     RouterModule.forRoot([
-      {path:'', component:HomeComponent}, 
+      {path:'', component:ProductsComponent}, 
       {path:'login', component:LoginComponent},
       {path:'products', component:ProductsComponent},
       {path:'shopping-cart', component:ShoppingCartComponent},

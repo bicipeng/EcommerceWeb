@@ -27,8 +27,8 @@ export class AdminProductsComponent implements OnInit {
   //  }))
      
       this.products$=  this.productService.getAll().snapshotChanges().pipe(map(pt=>{
-        console.log(pt)
-        // this.products=pt;
+    
+        // in order to get the key of each product needs to uses the snapshotchanges. 
         return pt.map(
           ele=>({key:ele.payload.key,...ele.payload.val() as {}})
         )
@@ -46,7 +46,7 @@ export class AdminProductsComponent implements OnInit {
   ngOnInit(): void {
   }
   filter(query:string){
-    console.log(query)
+   
     this.products$ =(query)? this.products$.pipe (
       map(items => 
        items.filter((item:any) => item.title.toLowerCase().indexOf(query) > -1)) ) : ( this.products$ = this.products);
