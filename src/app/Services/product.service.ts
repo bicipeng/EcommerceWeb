@@ -18,8 +18,13 @@ export class ProductService {
   }
   //get product by id from firebase
   getOne(productId:string){
-    return this.db.object('/products/' + productId).valueChanges();
+    return this.db.object<Product>('/products/' + productId).snapshotChanges();
+    
   }
+
+
+
+
   upDate(productId:string,product:any){
     return this.db.object("/products/"+productId).update(product);
 

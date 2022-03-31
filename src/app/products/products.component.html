@@ -7,9 +7,15 @@
     </div>
     <div class="col">
         <div class="row">
-            <ng-container *ngFor ="let p of filterProducts; let i = index">
-                <div class="col">
-                    <app-card [p]="p"></app-card>
+            <ng-container *ngFor ="let product of filterProducts; let i = index">
+              
+        
+                <div class="col"> 
+                   
+                   
+                    <app-card [product]="product"></app-card>
+                   
+                  
                 </div> 
                 <div *ngIf="(i+1)% 2===0" class="w-100"></div>
             </ng-container>

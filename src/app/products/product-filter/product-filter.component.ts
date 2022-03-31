@@ -24,7 +24,8 @@ export class ProductFilterComponent implements OnInit {
         ele=>({key:ele.payload.key,...ele.payload.val() as {}})
       )
      
-    })) }
+    }))
+   }
 
   ngOnInit(): void {
   }

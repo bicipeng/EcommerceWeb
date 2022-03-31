@@ -1,11 +1,14 @@
-<div *ngIf="p.title" class="card" >
-    <img src="{{p.imgUrl}}" class="card-img-top" *ngIf ="p.imgUrl" alt="{{p.title}}" >
+<div *ngIf="product.title" class="card" >
+    <img src="{{product.imgUrl}}" class="card-img-top" *ngIf ="product.imgUrl" alt="{{product.title}}" >
         <div class="card-body">
-          <h4 class="card-title">{{p.title}}</h4>
-          <p class="card-text">{{p.price | currency:"USD"}}</p>
+          <h4 class="card-title">{{product.title}}</h4>
+          <p class="card-text">{{product.price | currency:"USD"}}</p>
          
         </div>
         <div class="card-footer">
-            <a class="btn btn-primary w-100"> Add to Cart</a>
+            <button *ngIf="showAction"
+             class="btn btn-primary w-100"
+             (click)="addToCart(product)"> Add to Cart</button>
         </div>
+     
  </div> 
