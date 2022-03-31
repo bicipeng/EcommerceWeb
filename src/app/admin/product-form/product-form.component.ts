@@ -60,6 +60,7 @@ product:any= {};
     console.log("if productiD IS NEW", this.id ==="new")
     if(this.id !=="new") this.productService.upDate(this.id,product);
     else this.productService.create(product);
+    console.log("onSave",this.product)
     console.log("Form submitted!");
 
     this.router.navigate(['/admin/products']);

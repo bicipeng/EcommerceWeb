@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable,Subscription } from 'rxjs';
 import { ProductService } from 'src/app/Services/product.service';
 import { map } from 'rxjs/operators';
@@ -12,9 +12,10 @@ import { Product } from 'src/app/Models/Product';
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.css']
 })
-export class AdminProductsComponent implements OnInit {
+export class AdminProductsComponent implements OnInit,OnDestroy {
   products$:Observable<any>;
   products!: any;
+  filteredProducts:any=[];
   subscription:Subscription;
   
   
@@ -35,6 +36,7 @@ export class AdminProductsComponent implements OnInit {
        
       }))
       this.subscription = this.products$.subscribe(prts=> this.products= prts)
+      this.filteredProducts = this.products$.subscribe(prts =>this.filteredProducts = prts)
 
       //this.products$=  this.productService.getAll();
   }
@@ -47,9 +49,15 @@ export class AdminProductsComponent implements OnInit {
   }
   filter(query:string){
    
-    this.products$ =(query)? this.products$.pipe (
+    this.products$ =(query)? this.products$.pipe(
       map(items => 
        items.filter((item:any) => item.title.toLowerCase().indexOf(query) > -1)) ) : ( this.products$ = this.products);
   }
+  // filter(query: string) {
+  //   this.filteredProducts = (query) 
+  //     ? this.products?.filter((p:any) => p && p.title ? p.title.toLowerCase().includes(query.toLowerCase()) : null)
+  //     : this.products;
+  // }
+ 
 
 }
