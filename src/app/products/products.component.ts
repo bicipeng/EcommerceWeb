@@ -1,26 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Category } from '../Models/Category';
 import { Product } from '../Models/Product';
 import { ProductService } from '../Services/product.service';
+import { ShoppingCartService } from '../Services/shopping-cart.service';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
 products: Product[]=[];
 filterProducts: Product[]=[];
 category?:string;
+shoppingCart:any;
+subscription! : Subscription
 
 
   constructor(
     route:ActivatedRoute,
     productService:ProductService, 
+    private shoppingCartService: ShoppingCartService
    ) {
 
     // productService.getAll().valueChanges().subscribe(eles =>{
@@ -41,6 +46,7 @@ category?:string;
      
     }))
      */
+    
     productService.getAll().snapshotChanges().pipe(switchMap(eles=>{
   
       
@@ -62,7 +68,9 @@ category?:string;
     ). subscribe(params=>{
     
         this.category=params.get('category') as string;
-        this.filterProducts = (this.category) ? this.products?.filter(p=>p.category.toLowerCase()=== this.category): this.products
+        this.filterProducts = (this.category) ?
+         this.products?.filter(p=>p.category.toLowerCase()=== this.category)
+         : this.products
   
       });
 
@@ -71,9 +79,15 @@ category?:string;
     
    }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+     (await this.shoppingCartService.getCart())
+     .valueChanges()
+     .subscribe((sc:any)=>this.shoppingCart=sc);
     
   }
 
+  ngOnDestroy(): void {
+      this.subscription!.unsubscribe();
+  }
 
 }

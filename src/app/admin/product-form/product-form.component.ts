@@ -57,11 +57,10 @@ product:any= {};
 
 
   save(product:any){
-    console.log("if productiD IS NEW", this.id ==="new")
+    
     if(this.id !=="new") this.productService.upDate(this.id,product);
     else this.productService.create(product);
-    console.log("onSave",this.product)
-    console.log("Form submitted!");
+
 
     this.router.navigate(['/admin/products']);
 
@@ -74,7 +73,7 @@ product:any= {};
     this.router.navigate(['/admin/products']);
   }
   checkId(){
-    console.log("if productiD IS NEW", this.id ==="new")
+   // console.log("if productiD IS NEW", this.id ==="new")
   }
 
 }

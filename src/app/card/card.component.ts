@@ -13,6 +13,7 @@ export class CardComponent {
   // @Input('p') p!:Product;
   @Input() showAction:boolean=true;
   @Input() product!:Product;
+  @Input() shoppingCart:any;
  
   // products:Product[]=[];
   constructor(private shoppingCardService:ShoppingCartService) {
@@ -23,5 +24,11 @@ export class CardComponent {
     this.shoppingCardService.addToCart(product);
    }
 
+   getQuantity(){
 
+    if(!this.shoppingCart) return 0;
+    let item= this.shoppingCart.items[this.product.key];
+    return item ? item.quantity : 0;
+
+   }
 }
