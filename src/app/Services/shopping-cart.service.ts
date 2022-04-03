@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { create } from 'domain';
 import { defaultIfEmpty, map, take } from 'rxjs';
 import { Product } from '../Models/Product';
+import { ShoppingCart } from '../Models/Shopping-Cart';
 
 @Injectable({
   providedIn: 'root'
