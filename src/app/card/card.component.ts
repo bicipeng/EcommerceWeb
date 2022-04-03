@@ -20,8 +20,12 @@ export class CardComponent {
   // this.products$?.subscribe(ele=> this.products = ele)
    }
 
-   addToCart(product:Product){
-    this.shoppingCardService.addToCart(product);
+   addToCart(){
+    this.shoppingCardService.addToCart(this.product);
+   }
+
+   removeFromCart(){
+     this.shoppingCardService.removeFromCart(this.product);
    }
 
    getQuantity(){
