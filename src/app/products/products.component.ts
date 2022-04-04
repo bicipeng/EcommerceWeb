@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -20,14 +19,13 @@ products: Product[]=[];
 filterProducts: Product[]=[];
 category?:string;
 shoppingCart:any;
-subscription! : Subscription;
+subscription! : Subscription
 
 
   constructor(
     route:ActivatedRoute,
     productService:ProductService, 
-    private shoppingCartService: ShoppingCartService,
-    private db:AngularFireDatabase
+    private shoppingCartService: ShoppingCartService
    ) {
 
     // productService.getAll().valueChanges().subscribe(eles =>{
@@ -82,9 +80,7 @@ subscription! : Subscription;
    }
 
   async ngOnInit() {
-    let cartId = localStorage.getItem('cartId');
-     (await this.db.object("/shopping-carts/" + cartId))
-     .valueChanges()
+     (await this.shoppingCartService.getCart())
      .subscribe((sc:any)=>this.shoppingCart=sc);
     
   }
