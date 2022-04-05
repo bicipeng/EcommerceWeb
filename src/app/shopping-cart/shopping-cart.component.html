@@ -14,10 +14,10 @@
     <tbody>
     <tr *ngFor="let item of cart.items" >
         <ng-container *ngIf = "item.quantity > 0">
-        <td>{{item.product.title}}</td>
+        <td>{{item.title}}</td>
         <!-- <td >{{item.quantity}}</td> -->
         <td>
-            <app-product-quantity [product]="item.product" [shoppingCart]="cart"></app-product-quantity>
+            <app-product-quantity [product]="item" [shoppingCart]="cart"></app-product-quantity>
         </td>
         <td>{{item.totalPrice | currency:'USD'}}</td>
         </ng-container>
@@ -32,4 +32,15 @@
 </tfoot>
 </table>
 <!-- <button class="btn btn-primary" (click)="cart.productIds">get iD</button> -->
+<button class="btn btn-danger btn-sm"
+(click)="clearCart()">
+    Clear Shopping Cart
+</button>
+
 </ng-container>
+<!-- <button class="btn btn-primary" (click)="createCart()">
+    create Cart
+</button>
+<button class="btn btn-primary" (click)="addToCart()">
+    add to cart
+</button> -->
