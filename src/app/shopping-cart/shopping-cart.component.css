@@ -1,0 +1,16 @@
+.quant-width{
+    width: 300px;
+}
+.price-width{
+    width: 200px;
+    text-align: right;
+}
+.price{
+    text-align: right; 
+}
+.thumbNail{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-size: cover;
+}

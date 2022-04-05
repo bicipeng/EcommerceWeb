@@ -64,16 +64,18 @@ export class ShoppingCartService {
     item$.valueChanges()
     .pipe(take(1))
     .subscribe((item:any) => {
-    
-       item ? item$.update({
-         title:product.title,
-         imgUrl:product.imgUrl,
-         price:product.price,
-         quantity: item['quantity'] + change}) :  item$.set({
-          title:product.title,
-          imgUrl:product.imgUrl,
-          price:product.price,
-           quantity: 1 });
+     let quantity = (item? item.quantity:0) + change;
+     if(quantity ===0) item$.remove(); 
+     else item$.update({
+      title:product.title,
+      imgUrl:product.imgUrl,
+      price:product.price,
+      quantity: quantity})
+      //  item ?  :  item$.set({
+      //     title:product.title,
+      //     imgUrl:product.imgUrl,
+      //     price:product.price,
+      //      quantity: 1 });
 
     });
   }

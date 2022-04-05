@@ -19,11 +19,11 @@ export class ShoppingCartComponent implements OnInit {
 clearCart(){
   this.ShoppingCartService.clearCart();
 }
-// createCart(){
-//   this.ShoppingCartService.create()
-// }
-// addToCart(){
-//   this.ShoppingCartService.addToCart({price:"2",title:"mango",imgUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Hapus_Mango.jpg/220px-Hapus_Mango.jpg", category:"Fruit",key:"-MzC1kxTQQBwyXex1FqI" })
-// }
+createCart(){
+  this.ShoppingCartService.create()
+}
+addToCart(){
+  this.ShoppingCartService.addToCart({price:"2",title:"mango",imgUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Hapus_Mango.jpg/220px-Hapus_Mango.jpg", category:"Fruit",key:"-MzC1kxTQQBwyXex1FqI" })
+}
 
 }
