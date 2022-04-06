@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Order } from '../Models/Order';
 import { ShoppingCart } from '../Models/Shopping-Cart';
+import { AuthService } from '../Services/auth.service';
 import { OrderService } from '../Services/order.service';
 import { ShoppingCartService } from '../Services/shopping-cart.service';
 
@@ -11,13 +12,19 @@ import { ShoppingCartService } from '../Services/shopping-cart.service';
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.css']
 })
-export class CheckOutComponent implements OnInit {
+export class CheckOutComponent implements OnInit, OnDestroy {
   shoppingCart$!:Observable<ShoppingCart>;
  shoppingCartArr:any;
  products:any[]=[];
 
+ userId!:string;
+cartSubscription!:Subscription;
+userSubscription !: Subscription;
+
  
-  constructor(private shoppingCartService:ShoppingCartService, 
+  constructor(
+    private authService: AuthService,
+    private shoppingCartService:ShoppingCartService, 
     private router:Router,
     private orderService:OrderService) {
 
@@ -25,42 +32,49 @@ export class CheckOutComponent implements OnInit {
 
   async ngOnInit() {
   //  this.shoppingCart$ = await this.shoppingCartService.getCart();
-    (await this.shoppingCartService.getCart()).subscribe(x =>this.shoppingCartArr=x)
-
+    (await this.shoppingCartService.getCart()).subscribe(cart =>this.shoppingCartArr=cart)
+this.authService.user$.subscribe(user=>this.userId = user!.uid);
     
   }
+  ngOnDestroy(): void {
+      // this.subscription.unsubscribe();
+      if(this.userSubscription)
+      this.userSubscription.unsubscribe();
 
-  onSubmit(formInput:any){
-    console.log(this.shoppingCartArr)
-    this.shoppingCartService.clearCart();
-    console.log("formInput",formInput)
-
-  this.shoppingCartArr.items.forEach((ele:any)=>{
-
-      this.products.push({
-        product:{
-          title:ele.title,
-          quantity:ele.quantity,
-          totalPrice:ele.totalPrice
-          
-        }
-        
-      })
-   
-  })
+      if(this.cartSubscription)
+      this.cartSubscription.unsubscribe();
+      }
+  async onSubmit(formInput:any){
+  let shipping = {
+         firstName:formInput.firstName,
+    lastName:formInput.lastName,
  
-  let order = {
-    user:{
-      firstName:formInput.firstName,
-      lastName:formInput.lastName,
-      address: formInput.address
-    },
-    products:this.products,
-    total:this.shoppingCartArr.totalPrice,
-    date: new Date().getDate()
   }
-  this.orderService.createOder(order);
-    this.router.navigateByUrl("/order-success")
+
+    let order = new Order(this.userId, shipping, this.shoppingCartArr)
+
+
+
+
+    // console.log(this.shoppingCartArr)
+     this.shoppingCartService.clearCart();
+
+
+
+ 
+  // let order = {
+  // //   user:{
+  // //     firstName:formInput.firstName,
+  // //     lastName:formInput.lastName,
+  // //  address:formInput.address,
+  // //   },
+  //   userId:this.userId,
+  //   products:this.products,
+  //   datePlaced: new Date().getTime()
+  // }
+ let result = await this.orderService.createOder(order);
+    // this.router.navigateByUrl("/order-success")
+    this.router.navigate(['/order-success', result.key])
   }
 
 }
