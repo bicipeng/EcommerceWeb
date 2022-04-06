@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { OrderService } from '../Services/order.service';
 
 @Component({
   selector: 'app-my-orders',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyOrdersComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private orderServicd :OrderService) { }
+orders:any
+;  ngOnInit(): void {
   }
+  getAllOrders(){
+    this.orderServicd.getAllOrders().subscribe(x=>this.orders=x)
 
+}
 }
