@@ -23,7 +23,7 @@
         <td>
             <app-product-quantity [product]="item" [shoppingCart]="cart"></app-product-quantity>
         </td>
-        <td class="price">{{item.totalPrice | currency:'USD'}}</td>
+        <td class="price">{{item.totalPrice | currency:"USD"}}</td>
         </ng-container>
     </tr>
 </tbody>
@@ -44,6 +44,7 @@
     Clear Shopping Cart
 </button>
 
+<button class="btn btn-primary" (click)="checkOut()">Check out</button>
 <!-- <button class="btn btn-primary" (click)="createCart()">
     create Cart
 </button>

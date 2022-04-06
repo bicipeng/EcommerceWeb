@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ShoppingCart } from '../Models/Shopping-Cart';
 import { ShoppingCartService } from '../Services/shopping-cart.service';
@@ -11,7 +12,7 @@ import { ShoppingCartService } from '../Services/shopping-cart.service';
 export class ShoppingCartComponent implements OnInit {
   cart$!: Observable<ShoppingCart>;
 
-  constructor(private ShoppingCartService: ShoppingCartService) { }
+  constructor(private ShoppingCartService: ShoppingCartService, private router:Router) { }
 
   async ngOnInit(){
    this.cart$ = await this.ShoppingCartService.getCart();
@@ -19,11 +20,13 @@ export class ShoppingCartComponent implements OnInit {
 clearCart(){
   this.ShoppingCartService.clearCart();
 }
-createCart(){
-  this.ShoppingCartService.create()
+// createCart(){
+//   this.ShoppingCartService.create()
+// }
+// addToCart(){
+//   this.ShoppingCartService.addToCart({price:"2",title:"mango",imgUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Hapus_Mango.jpg/220px-Hapus_Mango.jpg", category:"Fruit",key:"-MzC1kxTQQBwyXex1FqI" })
+// }
+checkOut(){
+this.router.navigateByUrl("/check-out");
 }
-addToCart(){
-  this.ShoppingCartService.addToCart({price:"2",title:"mango",imgUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Hapus_Mango.jpg/220px-Hapus_Mango.jpg", category:"Fruit",key:"-MzC1kxTQQBwyXex1FqI" })
-}
-
 }
