@@ -32,8 +32,8 @@ userSubscription !: Subscription;
 
   async ngOnInit() {
   //  this.shoppingCart$ = await this.shoppingCartService.getCart();
-    (await this.shoppingCartService.getCart()).subscribe(cart =>this.shoppingCartArr=cart)
-this.authService.user$.subscribe(user=>this.userId = user!.uid);
+   this.cartSubscription = (await this.shoppingCartService.getCart()).subscribe(cart =>this.shoppingCartArr=cart)
+this.userSubscription = this.authService.user$.subscribe(user=>this.userId = user!.uid);
     
   }
   ngOnDestroy(): void {
@@ -72,7 +72,7 @@ this.authService.user$.subscribe(user=>this.userId = user!.uid);
   //   products:this.products,
   //   datePlaced: new Date().getTime()
   // }
- let result = await this.orderService.createOder(order);
+ let result = await this.orderService.placeOder(order);
     // this.router.navigateByUrl("/order-success")
     this.router.navigate(['/order-success', result.key])
   }

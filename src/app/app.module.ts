@@ -41,6 +41,7 @@ import { CardComponent } from './card/card.component';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { OrderService } from './Services/order.service';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 
 //import { ProductComponent } from './Services/product/product.component';
 
@@ -62,6 +63,7 @@ import { OrderService } from './Services/order.service';
     CardComponent,
     ProductFilterComponent,
     ProductQuantityComponent,
+    ShoppingCartSummaryComponent,
    
  
  
