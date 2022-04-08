@@ -1,85 +1,12 @@
 <div>
-    <div class="row">
+    <div class="row" >
 
     <div class="col-6">  
         <h1>Shipping</h1>
-        <form (ngSubmit)="onSubmit(checkoutForm.value)" action="submit" #checkoutForm = "ngForm">
-            <div class="form-group" >
-                <label for="fristName">FirstName</label>
-                <input required ngModel 
-                name="fristName" 
-                #firstName="ngModel" 
-                id="fristName"
-                type="text" 
-                class="form-control">
-                <!-- <div class="alert alert-danger" *ngIf="fristName.touched && fristName.invalid">
-                    <div *ngIf="fristName.errors.required"> Name is required.</div>
-                </div> -->
-                <label for="lastName">LastName</label>
-                <input 
-                required
-                 ngModel 
-                 name="lastName" 
-                #lastName="ngModel" 
-                id="lastName"
-                type="text" 
-                class="form-control">
-            <label for="Address">Address</label>
-            <input 
-            required
-            ngModel
-            name="addressline1"
-            #address="ngModel"
-            type="text" 
-            id="addressline1"
-             class="form-control" 
-             placeholder="Line 1" >
-             <br>
-            <input type="text"
-             class="form-control"
-              id="addressline2" 
-             
-              name="addressline2"
-              placeholder="Line 2" 
-              required>
-            <label for="city"> City </label>
-            <input
-            ngModel
-            name="city" 
-            #city="ngModel"
-            type="text"
-            class="form-control"
-             id = "city" 
-             required
-             >
-             <!-- <div class="alert alert-danger" *ngIf="city.touched && city.invalid ">
-                 <div *ngIf="city.errors.required"> City is required. </div>
-             </div> -->
-        </div>  
-            <button class="btn btn-primary"> Place Order</button>
-        </form>
+<app-shipping-form ></app-shipping-form>
     </div>
-    <div class="col-6" *ngIf="shoppingCartArr as cart">
-        <!-- <h1 > Order Summary</h1>
-        <p> You have {{cart.totalItemCount}} items in your shopping cart. </p>
-     <table class="talbe">
-        <tbody> 
-            <tr  *ngFor ="let item of cart.items" >
-                <th class="col-4">{{item.title}} x {{item.quantity}}</th>
-                <th></th>
-                <th></th>
-                <th>{{item.totalPrice | currency:"USD"}}</th>
-            </tr>
-        </tbody>
-    <tfoot>
-        <tr>
-            <th > Total:</th>
-            <th></th>
-            <th></th>
-            <th > {{cart.totalPrice | currency:'USD'}}</th>
-        </tr>
-    </tfoot>
-     </table> -->
+    <div class="col-6" *ngIf="shoppingCart as cart">
+
         <app-shopping-cart-summary [cart]="cart"></app-shopping-cart-summary>
 
     </div>

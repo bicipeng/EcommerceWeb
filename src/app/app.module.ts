@@ -42,6 +42,7 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { OrderService } from './Services/order.service';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 
 //import { ProductComponent } from './Services/product/product.component';
 
@@ -64,6 +65,7 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
     ProductFilterComponent,
     ProductQuantityComponent,
     ShoppingCartSummaryComponent,
+    ShippingFormComponent,
    
  
  

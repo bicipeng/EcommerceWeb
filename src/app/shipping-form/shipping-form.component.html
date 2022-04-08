@@ -1,0 +1,55 @@
+<form (ngSubmit)="onSubmit(checkoutForm.value)" action="submit" #checkoutForm = "ngForm">
+    <div class="form-group" >
+        <label for="fristName">FirstName</label>
+        <input required ngModel 
+        name="fristName" 
+        #firstName="ngModel" 
+        id="fristName"
+        type="text" 
+        class="form-control">
+        <!-- <div class="alert alert-danger" *ngIf="fristName.touched && fristName.invalid">
+            <div *ngIf="fristName.errors.required"> Name is required.</div>
+        </div> -->
+        <label for="lastName">LastName</label>
+        <input 
+        required
+         ngModel 
+         name="lastName" 
+        #lastName="ngModel" 
+        id="lastName"
+        type="text" 
+        class="form-control">
+    <label for="Address">Address</label>
+    <input 
+    required
+    ngModel
+    name="addressline1"
+    #address="ngModel"
+    type="text" 
+    id="addressline1"
+     class="form-control" 
+     placeholder="Line 1" >
+     <br>
+    <input type="text"
+     class="form-control"
+      id="addressline2" 
+     
+      name="addressline2"
+      placeholder="Line 2" 
+      required>
+    <label for="city"> City </label>
+    <input
+    ngModel
+    name="city" 
+    #city="ngModel"
+    type="text"
+    class="form-control"
+     id = "city" 
+     required
+     >
+     <!-- <div class="alert alert-danger" *ngIf="city.touched && city.invalid ">
+         <div *ngIf="city.errors.required"> City is required. </div>
+     </div> -->
+</div>  
+    <button class="btn btn-primary"> Place Order</button>
+</form>
