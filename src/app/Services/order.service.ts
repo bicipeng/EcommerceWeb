@@ -17,6 +17,6 @@ export class OrderService {
 
   }
   getAllOrders(){
-    return this.db.list('/orders').valueChanges();
+    return this.db.list('/orders')
   }
 }

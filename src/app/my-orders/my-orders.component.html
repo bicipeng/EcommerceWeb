@@ -3,18 +3,19 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Customer</th>
-            <th>Date</th>
+            <th>Order Id</th>
+            <th>Order Date</th>
             <th></th>
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let order of orders ">
-            <td>{{order.user.firstName}}</td>
-            <td>{{order.date}}</td>
+    <tbody *ngIf ="myOrders$ | async as orders">
+        <tr *ngFor="let order of orders">
+            <td>{{order.key}}</td>
+            <td>{{order.datePlaced | date: 'dd/MM/yyyy'}}</td>
             <td>
-                <a>View</a> 
+                <a [routerLink]="['/my/orders/',order.key]">View</a> 
             </td>
         </tr>
     </tbody>
 </table>
+<button class="btn btn-primary" (click)="getAllOrders()"> check order </button>
