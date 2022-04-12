@@ -29,7 +29,7 @@ subscription !: Subscription;
      }
 
   async ngOnInit() {
-  //  this.shoppingCart$ = await this.shoppingCartService.getCart();
+    
    this.subscription = (await this.shoppingCartService.getCart()).subscribe(cart =>this.shoppingCart=cart)
 
     
@@ -42,12 +42,6 @@ subscription !: Subscription;
  
    }
 
-//     let order = new Order(this.userId, shipping, this.shoppingCartArr);
-//     // console.log(this.shoppingCartArr)
-//      this.shoppingCartService.clearCart();
-//  let result = await this.orderService.placeOder(order);
-//     // this.router.navigateByUrl("/order-success")
-//     this.router.navigate(['/order-success', result.key])
-//   }
+
 
 }

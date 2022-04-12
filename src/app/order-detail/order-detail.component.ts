@@ -19,28 +19,22 @@ cartTotal=0;
   ) { 
     this.id = this.route.snapshot.paramMap.get('id')!;
 
-this.orderService.getOneOrder(this.id).subscribe((order:any)=>{
-this.orderProducts = order;
-if(order.items)
-order.items.map((item:any)=>{
-  this.cartTotal += item.totalPrice;
-})
 
-})
 
 
 
 }
 
-  ngOnInit(): void {
-    // console.log("hello.orderproducts", this.orderProducts)
-   //  if(this.orderProducts.items){
-   //   this.orderProducts.items(
-   //     (item:any)=>{
-   //    this.cartTotal+= item.totalPrice
- 
-   //   })
-   //  }
+  async ngOnInit() {
+
+  ( await this.orderService.getOneOrder(this.id)).subscribe((order:any)=>{
+    this.orderProducts = order;
+    if(order.items)
+    order.items.map((item:any)=>{
+      this.cartTotal += item.totalPrice;
+    })
+    
+    })
    }
  
 
@@ -49,11 +43,7 @@ order.items.map((item:any)=>{
    }
 
 
-// getOrder(){
-// //   console.log("getOrder here")
-// // this.orderService.getOneOrder(this.id).subscribe()
 
-//   }
   
 
 
