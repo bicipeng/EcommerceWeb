@@ -45,9 +45,10 @@ export class ShippingFormComponent implements OnInit {
       lastName:formInput.lastName,
    
     }
-  
+    console.log("here is shopping cart",this.shoppingCartArr)
+    console.log("here is shipping",shipping )
       let order = new Order(this.userId, shipping, this.shoppingCartArr);
-      // console.log(this.shoppingCartArr)
+     
        this.shoppingCartService.clearCart();
    let result = await this.orderService.placeOder(order);
       // this.router.navigateByUrl("/order-success")
