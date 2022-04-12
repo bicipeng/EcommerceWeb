@@ -19,13 +19,8 @@ export class AdminProductsComponent implements OnInit,OnDestroy {
   subscription:Subscription;
   
   
-  constructor(private productService:ProductService,
-    private db:AngularFireDatabase) {  
-  //  this.products$ =  this.productService.getAll();
-  //  console.log(this.products$)
-  //  this.product = this.products$.pipe(map(changes => {
-  //    return changes.map((ele: { payload: { key: any; val: () => any; }; })=>({key:ele.payload.key,...ele.payload.val()}))
-  //  }))
+  constructor(private productService:ProductService) {  
+
      
       this.products$=  this.productService.getAll().snapshotChanges().pipe(map(pt=>{
     
@@ -37,8 +32,6 @@ export class AdminProductsComponent implements OnInit,OnDestroy {
       }))
       this.subscription = this.products$.subscribe(prts=> this.products= prts)
       this.filteredProducts = this.products$.subscribe(prts =>this.filteredProducts = prts)
-
-      //this.products$=  this.productService.getAll();
   }
 
   ngOnDestroy(){
@@ -53,11 +46,7 @@ export class AdminProductsComponent implements OnInit,OnDestroy {
       map(items => 
        items.filter((item:any) => item.title.toLowerCase().indexOf(query) > -1)) ) : ( this.products$ = this.products);
   }
-  // filter(query: string) {
-  //   this.filteredProducts = (query) 
-  //     ? this.products?.filter((p:any) => p && p.title ? p.title.toLowerCase().includes(query.toLowerCase()) : null)
-  //     : this.products;
-  // }
+
  
 
 }

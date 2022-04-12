@@ -22,9 +22,6 @@ export class ProductService {
     
   }
 
-
-
-
   upDate(productId:string,product:any){
     return this.db.object("/products/"+productId).update(product);
 

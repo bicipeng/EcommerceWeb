@@ -94,24 +94,7 @@ private populateProducts(){
 
     });
 }
-//  async getCart(){
-//   let cartId = await this.shoppingCartService.getOrCreateCartId()
-//   console.log("here is the shoppingCart Id", cartId)
-    
-//   return this.db.object("/shopping-carts/" + cartId)
-//   .valueChanges()
-//   .pipe(map(
-//     (x:any)=> {
-//       console.log("x, testing if item exits", x)
-//       return new ShoppingCart(x.items)}
-//   )).subscribe((sc)=>{
-//     console.log("here is shopping cart from service ", sc)
 
-//   })
-//   }
-  
  
- 
-  
 
 }

@@ -19,7 +19,7 @@ categories$: Observable<any>;
 product:any= {}; 
   id:string;
   categories:[]=[];
-  // subscription:Subscription;
+
   
 
   constructor(
@@ -65,8 +65,6 @@ product:any= {};
     this.productService.deleteProduct(this.id);
     this.router.navigate(['/admin/products']);
   }
-  checkId(){
-   // console.log("if productiD IS NEW", this.id ==="new")
-  }
+
 
 }

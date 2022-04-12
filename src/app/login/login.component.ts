@@ -20,18 +20,5 @@ export class LoginComponent implements OnInit {
   this.AuthService.logIn();
   
   }
-/*
 
-import {AngularFireAuth} from '@angular/fire/auth';
-import {auth} from 'firebase/app'; // Wrong 
-import {auth} from 'firebase'; // Good
-...
-constructor(private afAuth: AngularFireAuth )
-...
-const provider = new auth.GoogleAuthProvider();
-const credential = await this.afAuth.signInWithPopup(provider);
-
-
-
-*/
 }

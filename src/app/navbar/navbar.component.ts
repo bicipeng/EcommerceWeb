@@ -24,15 +24,7 @@ export class NavbarComponent implements OnInit {
 
   async ngOnInit(){
     this.auth.appUser$.subscribe(user=>this.appUser = user!);
-    //  let cart$ = (await this.shoppingCartService.getCart()).valueChanges();
-    //  cart$.subscribe(
-    //    (cart:any)=>{
-    //      this.shoppingCartItemCount = 0;
-    //     for(let productId in cart.items){
-    //       this.shoppingCartItemCount += cart.items[productId].quantity;
-    //     }
-    //    }
-    //  )
+
     this.cart$ = await this.shoppingCartService.getCart();
   }
   logout(){
@@ -40,8 +32,5 @@ export class NavbarComponent implements OnInit {
   
     
   }
-  // checkItems(){
-   
-  //  }
 
 }

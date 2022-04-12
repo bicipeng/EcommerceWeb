@@ -1,10 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { Order } from '../Models/Order';
 import { ShoppingCart } from '../Models/Shopping-Cart';
-import { AuthService } from '../Services/auth.service';
-import { OrderService } from '../Services/order.service';
 import { ShoppingCartService } from '../Services/shopping-cart.service';
 
 @Component({
@@ -29,7 +25,7 @@ subscription !: Subscription;
      }
 
   async ngOnInit() {
-    
+
    this.subscription = (await this.shoppingCartService.getCart()).subscribe(cart =>this.shoppingCart=cart)
 
     
