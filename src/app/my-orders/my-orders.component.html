@@ -3,15 +3,15 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Order Id</th>
+            <th>Order Number</th>
             <th>Order Date</th>
             <th></th>
         </tr>
     </thead>
     <tbody *ngIf ="myOrders$ | async as orders">
         <tr *ngFor="let order of orders">
-            <td>{{order.key}}</td>
-            <td>{{order.datePlaced | date: 'dd/MM/yyyy'}}</td>
+            <td> 000{{order.key.substr(order.key.length-6)}} </td>
+            <td>{{order.datePlaced | date: 'MM/dd/yyyy'}}</td>
             <td>
                 <a [routerLink]="['/my/orders/',order.key]">View</a> 
             </td>

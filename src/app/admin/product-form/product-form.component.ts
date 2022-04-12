@@ -31,14 +31,7 @@ product:any= {};
       this.categories$ = this.categoryService.getCategories().valueChanges();
   this.id = this.route.snapshot.paramMap.get('id')!;
   if(this.id){
-//     categoryService.getCategories().snapshotChanges().pipe(map(pt=>{ 
-//       // in order to get the key of each product needs to uses the snapshotchanges.
-//       return pt.map(
-//         ele=>({key:ele.payload.key,...ele.payload.val() as {}})
-//       )
-    
-//     }
-//  ))
+
  
  this.productService.getOne(this.id).pipe(take(1)).pipe(map((pt:any)=>
    // in order to get the key of each product needs to uses the snapshotchanges.

@@ -1,8 +1,35 @@
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
+<h1>Order Detail</h1>
+<div class="row col-10" >
+<p>
+   Your order: place in  {{orderProducts.datePlaced | date: 'MM/dd/yyyy'}}
+ 
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>Product</th>
+            <th >Quantity</th>
+            <th >Price</th>
+        </tr>
+    </thead>
+    <tbody >
+    <tr *ngFor="let item of orderProducts.items" >
+    
+        <td>{{item.product.title}}</td>
+        <td >{{item.quantity}}</td> 
+ 
+        <td class="price">{{item.totalPrice | currency:'USD'}}</td>
+   
+    </tr>
+</tbody>
+<tfoot>
+    <tr> 
+        <th>Order Total:</th>
+        <th></th>
+        
+        <th class="price">{{cartTotal | currency:'USD'}}</th>
+    </tr>
+</tfoot>
+
+</table>

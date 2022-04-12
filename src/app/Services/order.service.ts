@@ -19,4 +19,9 @@ export class OrderService {
   getAllOrders(){
     return this.db.list('/orders')
   }
+
+  //get order by id
+  getOneOrder(id:string){
+    return this.db.object('/orders/' + id).valueChanges();;
+  }
 }
