@@ -14,3 +14,6 @@
     border-radius: 100%;
     background-size: cover;
 }
+.btn-primary{
+    background-color: rgb(203, 166, 218);
+}

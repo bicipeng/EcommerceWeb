@@ -1,3 +1,6 @@
 .drown-toggle{
     cursor: pointer;
 }
+*{
+    background-color: rgb(196, 177, 228);
+}
