@@ -17,6 +17,7 @@ export class ShippingFormComponent implements OnInit {
  shoppingCartArr:any;
  products:any[]=[];
  userId!:string;
+ orderId!:string;
  cartSubscription!:Subscription;
  userSubscription !: Subscription;
   constructor(
@@ -45,9 +46,8 @@ export class ShippingFormComponent implements OnInit {
       lastName:formInput.lastName,
    
     }
-    console.log("here is shopping cart",this.shoppingCartArr)
-    console.log("here is shipping",shipping )
-      let order = new Order(this.userId, shipping, this.shoppingCartArr);
+    this.orderId =( Math.floor(Math.random()*90000) + 10000 ).toString();
+      let order = new Order(this.userId,this.orderId, shipping, this.shoppingCartArr);
      
        this.shoppingCartService.clearCart();
    let result = await this.orderService.placeOder(order);

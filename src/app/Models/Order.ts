@@ -6,7 +6,7 @@ export class Order{
 
 datePlaced:any;
 items!: any[];
-    constructor(public userId:string, public shipping:any, shoppingCart:ShoppingCart){
+    constructor(public userId:string, public orderId:string,public shipping:any, shoppingCart:ShoppingCart){
         this.datePlaced = new Date().getTime() 
 
        this.items = shoppingCart.items.map((ele:any)=>{

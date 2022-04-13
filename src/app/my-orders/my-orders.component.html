@@ -10,7 +10,7 @@
     </thead>
     <tbody *ngIf ="myOrders$ | async as orders">
         <tr *ngFor="let order of orders">
-            <td> 000{{order.key.substr(order.key.length-6)}} </td>
+            <td> #{{order.orderId}} </td>
             <td>{{order.datePlaced | date: 'MM/dd/yyyy'}}</td>
             <td>
                 <a [routerLink]="['/my/orders/',order.key]">View</a> 

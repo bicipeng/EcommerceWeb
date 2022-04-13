@@ -11,6 +11,7 @@ export class OrderDetailComponent implements OnInit {
 id!:string;
 orderProducts:any;
 cartTotal=0;
+// orderId!:string;
   constructor(
     private route:ActivatedRoute, 
     private orderService:OrderService
@@ -19,10 +20,11 @@ cartTotal=0;
 
 }
 
-  async ngOnInit() {
+   ngOnInit():void {
 
-  ( await this.orderService.getOneOrder(this.id)).subscribe((order:any)=>{
+  this.orderService.getOneOrder(this.id).subscribe((order:any)=>{
     this.orderProducts = order;
+  // this.orderId = order.orderId;
     if(order.items)
     order.items.map((item:any)=>{
       this.cartTotal += item.totalPrice;
