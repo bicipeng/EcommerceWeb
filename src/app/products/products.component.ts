@@ -21,7 +21,7 @@ products: Product[]=[];
 filterProducts: Product[]=[];
 category?:string;
 shoppingCart$!:Observable<ShoppingCart>;
-// subscription! : Subscription
+
 
 
   constructor(
@@ -31,33 +31,12 @@ shoppingCart$!:Observable<ShoppingCart>;
     private db:AngularFireDatabase
    ) {
 
-    // productService.getAll().valueChanges().subscribe(eles =>{
-    //   this.products = eles;
-    //   route.queryParamMap.subscribe(params=>{
-    
-    //     this.category=params.get('category') as string;
-    //     this.filterProducts = (this.category) ? (this.products?.filter(p=>p.category.toLowerCase()=== this.category)): this.products
-  
-    //   });
-
-    /*
-       this.categories$ = categoryService.getCategories().snapshotChanges().pipe(map(pt=>{  
-      // in order to get the key of each product needs to uses the snapshotchanges. 
-      return pt.map(
-        ele=>({key:ele.payload.key,...ele.payload.val() as {}})
-      )
-     
-    }))
-     */
     
    }
 
   async ngOnInit() {
     
-    //  (await this.shoppingCartService.getCart())
-    //  .subscribe((sc:any)=>{
-    //    console.log("here is shopping cart from service ", sc)
-    //   return  this.shoppingCart=sc});
+ 
     this.shoppingCart$ = await this.shoppingCartService.getCart()
 
     this.populateProducts();
@@ -66,7 +45,7 @@ shoppingCart$!:Observable<ShoppingCart>;
   }
  private applyFilter(){
   this.filterProducts = (this.category) ?
-  this.products?.filter(p=>p.category.toLowerCase()=== this.category)
+  this.products?.filter(p=>p.category.toLowerCase() === this.category)
   : this.products
 
 }

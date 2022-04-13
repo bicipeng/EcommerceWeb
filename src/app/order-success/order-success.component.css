@@ -13,7 +13,7 @@
 	}
    .payment_header
    {
-	   background:rgb(131, 163, 116);
+	   background:rgb(142, 99, 153);
 	   padding:20px;
        border-radius:20px 20px 0px 0px;
 	   
@@ -54,7 +54,7 @@
         color:#fff;
         border-radius:30px;
         padding:5px 10px;
-        background:rgb(131, 163, 116);
+        background:rgb(142, 99, 153);
         transition:all ease-in-out 0.3s;
     }
 
