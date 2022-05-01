@@ -33,8 +33,6 @@ subscription !: Subscription;
   ngOnDestroy(): void {
     if(this.subscription)
     this.subscription.unsubscribe();
-  
-
  
    }
 

@@ -26,6 +26,7 @@ user$:Observable<firebase.User| null>;
     localStorage.setItem('returnUrl',returnUrl);
     //service cannot be unit testing 
     const provider = new firebase.auth.GoogleAuthProvider();
+    console.log("if user info is get",this.afAuth.signInWithRedirect(provider))
    return this.afAuth.signInWithRedirect(provider);
 
   }
